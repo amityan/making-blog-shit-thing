@@ -5,6 +5,7 @@ import BlogPost from '@/components/BlogPost'
 import Pagination from '@/components/Pagination'
 import { getAllPosts } from '@/lib/notion'
 import { useConfig } from '@/lib/config'
+import { Suspense } from 'react'
 
 export async function getStaticProps () {
   const posts = await getAllPosts({ includePages: false })
@@ -21,14 +22,20 @@ export async function getStaticProps () {
   }
 }
 
+function Loading(){
+  return "Loading...";
+}
+
 export default function Blog ({ postsToShow, page, showNext }) {
   const { title, description } = useConfig()
 
   return (
     <Container title={title} description={description}>
+      <Suspense fallback={<Loading />}>
       {postsToShow.map(post => (
         <BlogPost key={post.id} post={post} />
       ))}
+      </Suspense>
       {showNext && <Pagination page={page} showNext={showNext} />}
     </Container>
   )
