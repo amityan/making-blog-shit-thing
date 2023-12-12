@@ -103,12 +103,14 @@ export default function Header ({ navBarTitle, fullWidth }) {
         </svg>
         <div className="flex items-center">
           <Link href="/" aria-label={BLOG.title}>
-            <Image
-              src={favicon}
-              width={24}
-              height={24}
+            <img
+              src="https://i.postimg.cc/FH923Fmt/18af54e801075ca4a06ad3e5686c399b224de192f8ea39da2c7d2011a6c51f9e.png"
+              // width={24}
+              // img style
+              className='h-8 object-cover'
+              // height={24}
               alt={BLOG.title}
-              onError={() => setFavicon(true)}
+              // onError={() => setFavicon(true)}
             />
           </Link>
           <HeaderName

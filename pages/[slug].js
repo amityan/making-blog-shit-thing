@@ -16,7 +16,7 @@ export default function BlogPost ({ post, blockMap, emailHash }) {
   const locale = useLocale()
 
   // TODO: It would be better to render something
-  if (router.isFallback) return null
+  if (router.isFallback) return 'Loading'
 
   const fullWidth = post.fullWidth ?? false
 
